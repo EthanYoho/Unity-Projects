@@ -16,15 +16,16 @@ public class playerScript : MonoBehaviour
         thePlayer = new Player("Ethan");
     }
 
-    public void DoSomething()
-    {
-        print("Player: Do something called");
-    }
+ 
 
     void OnCollisionEnter(Collision collision)
     {
+
+        
+
         if(collision.gameObject.tag.Equals("Monster"))
         {
+            
             count++;
             if(count == 3)
             {
