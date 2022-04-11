@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class newboxScript : MonoBehaviour
 {
-    public float speed = 4.0f;
-    private Rigidbody rb;
-
+    public GameObject thePlayer;
     private int count;
+    private Vector3 playerPosition;
+    private Rigidbody rb;
+    public float speed = 20f;
+    private UnityEngine.AI.NavMeshAgent agent;
+
     // Start is called before the first frame update
     void Start()
     {
         count = 0;
         rb = this.gameObject.GetComponent<Rigidbody>();
-        //CORE.addCubes(this.gameObject);
+        agent = this.gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
+        agent.speed = 10f;
     }
 
     void OnCollisionEnter(Collision collision)
@@ -34,33 +38,10 @@ public class newboxScript : MonoBehaviour
 
     }
 
-    void randomMove()
-    {
-        int ran = Random.Range(1, 4);
-        if (ran == 1)
-        {
-            rb.velocity = Vector3.forward * speed;
-        }
-        else
-        if (ran == 2)
-        {
-            rb.velocity = Vector3.right * speed;
-        }
-        else
-        if (ran == 3)
-        {
-            rb.velocity = Vector3.back * speed;
-        }
-        else
-        if (ran == 4)
-        {
-            rb.velocity = Vector3.left * speed;
-        }
-    }
-
+   
     // Update is called once per frame
     void Update()
     {
-        randomMove();
+        agent.SetDestination(thePlayer.transform.position);
     }
 }

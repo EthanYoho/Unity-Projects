@@ -36,14 +36,11 @@ public class CORE : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        for (int j = 0; j < 10; j++)
+        for (int i = 0; i < 100; i++)
         {
-            print(Random.Range(1, 10));
-        }
-
-        for (int i = 0; i < 20; i++)
-        {
-            Instantiate(enemeyPrefab, spawnPoint.position, Quaternion.identity);
+            Transform t = Instantiate(enemeyPrefab, spawnPoint.position, Quaternion.identity);
+            Rigidbody rb = t.GetComponent<Rigidbody>();
+            rb.velocity = new Vector3(Random.Range(10, 30), Random.Range(0, 20), Random.Range(10, 30));
         }
     }
 
