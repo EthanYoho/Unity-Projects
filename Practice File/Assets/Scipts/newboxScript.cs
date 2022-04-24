@@ -10,10 +10,13 @@ public class newboxScript : MonoBehaviour
     private Rigidbody rb;
     public float speed = 20f;
     private UnityEngine.AI.NavMeshAgent agent;
+    private Room currentRoom;
+    private Enemy theEnemy;
 
     // Start is called before the first frame update
     void Start()
     {
+        CORE.setEnemy(theEnemy);
         count = 0;
         rb = this.gameObject.GetComponent<Rigidbody>();
         agent = this.gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();

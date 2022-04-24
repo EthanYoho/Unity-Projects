@@ -6,24 +6,26 @@ public class playerScript : MonoBehaviour
 {
     public float speed = 2.0f;
     private Rigidbody rb;
-    private Player thePlayer;
+    private Player thePlayer; //= new Player("Ethan");
     private int count;
     // Start is called before the first frame update
     void Start()
     {
+        thePlayer = new Player("Ethan");
+        CORE.setPlayer(thePlayer);
         count = 0;
         rb = this.gameObject.GetComponent<Rigidbody>(); //specifcally asks for a component (for this it's rigidbody)
-        thePlayer = new Player("Ethan");
+        
     }
 
- 
+    
 
     void OnCollisionEnter(Collision collision)
     {
 
         
 
-        if(collision.gameObject.tag.Equals("Monster"))
+        if(collision.gameObject.tag.Equals("Enemy"))
         {
             
             count++;
