@@ -11,12 +11,20 @@ public class newboxScript : MonoBehaviour
     public float speed = 20f;
     private UnityEngine.AI.NavMeshAgent agent;
     private Room currentRoom;
-    private Enemy theEnemy;
+    private Enemy theEnemy = new Enemy();
+    
 
     // Start is called before the first frame update
+
+    void Awake()
+    {
+        this.theEnemy = new Enemy();
+    }
+
     void Start()
     {
-        CORE.setEnemy(theEnemy);
+        
+        CORE.setEnemy(this.theEnemy);
         count = 0;
         rb = this.gameObject.GetComponent<Rigidbody>();
         agent = this.gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
@@ -35,6 +43,8 @@ public class newboxScript : MonoBehaviour
             {
               
                Destroy(this.gameObject);
+               
+
             }
         }
         

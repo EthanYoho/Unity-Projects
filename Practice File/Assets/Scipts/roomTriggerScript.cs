@@ -7,6 +7,10 @@ public class roomTriggerScript : MonoBehaviour
     private Room thisRoom;
   
     // Start is called before the first frame update
+    void Awake()
+    {
+        print("Room trigger is awake");
+    }
     void Start()
     {
         
@@ -22,12 +26,15 @@ public class roomTriggerScript : MonoBehaviour
         {
             this.thisRoom.setPlayer(CORE.getPlayer()); // lets the new room know about the player
             print("PLayer now here in " + this.thisRoom);
+            Destroy(CORE.getRoom());
 
         }
         else if(other.gameObject.tag.Equals("Enemy"))
         {
-            print("Enemy Entered room" + this.gameObject.ToString());
             this.thisRoom.setEnemy(CORE.getEnemy());
+            print("Enemy now here in" + this.thisRoom);
+            
+            
         }
     }
 

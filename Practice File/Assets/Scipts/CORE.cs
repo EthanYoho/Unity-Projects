@@ -13,6 +13,15 @@ public class CORE : MonoBehaviour
     private static Player currentPlayer = null;
     private static Enemy currentEnemy = null;
 
+    public static GameObject getRoom()
+    {
+        for(int i = 0; i <theRoomsGos.Count; i++)
+        {
+            return CORE.theRoomsGos[i];
+        }
+        
+    }
+
     public static void setPlayer(Player p)
     {
         CORE.currentPlayer = p;
